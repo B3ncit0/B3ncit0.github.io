@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SelectionOption } from 'src/models/selection.model';
+import { SelectionService } from 'src/services/selection.service';
 
 @Component({
   selector: 'app-trash-selection',
@@ -7,9 +9,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./trash-selection.component.css']
 })
 export class TrashSelectionComponent implements OnInit {
-  items=[];
-  constructor(private router: Router) { }
+  selection: SelectionOption[] = [];
+  constructor(private selectionService: SelectionService) { }
 
   ngOnInit(): void {
+    this.selectionService.selection$.subscribe(data => {
+      this.selection = data;
+    })
   }
 }
