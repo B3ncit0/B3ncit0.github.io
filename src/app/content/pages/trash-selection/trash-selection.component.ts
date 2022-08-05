@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { SelectionOption } from 'src/models/selection.model';
 import { SelectionService } from 'src/services/selection.service';
 
@@ -15,6 +14,6 @@ export class TrashSelectionComponent implements OnInit {
   ngOnInit(): void {
     this.selectionService.selection$.subscribe(data => {
       this.selection = data;
-    })
+    });
   }
 }
